@@ -16,3 +16,12 @@
 @import url(../blocks/profile/__occupation/profile__occupation.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
+
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/elements/__card-list/elements__card-list.css);
+
+@import url(../blocks/card/card.css);
+@import url(../blocks/card/__image/card__image.css);
+@import url(../blocks/card/__description/card__description.css); /*возможно удалить везде как лишниюю упаковку*/
+@import url(../blocks/card/__title/card__title.css);
+@import url(../blocks/card/__like-icon/card__like-icon.css);
