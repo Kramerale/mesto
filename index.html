@@ -24,13 +24,14 @@
             <button class="profile__add-button"></button>
         </section>
 
-        <section class="elements">
+        <section class="elements" aria-label="Фотокарточки пользователя">
             <ul class="elements__card-list">
                 <li class="card">
                     <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="card__image">
                     <div class="card__description">
                         <h2 class="card__title">Карачаевск</h2>
                         <div class="card__like-icon"></div>
+                    </div>
                 </li>
                 <li class="card">
                     <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="card__image">
@@ -75,10 +76,10 @@
         <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
     </footer>
 
-    <section class="popup">
+    <section class="popup" aria-label="Попап">
         <div class="popup__container">
             <button class="popup__close-button"></button>
-            <form action="" class="popup__form">
+            <form class="popup__form">
                 <h3 class="popup__heading">Редактировать профиль</h3>
                 <input type="text" value="Жак-Ив Кусто" class="popup__name">
                 <input type="text" value="Исследователь океана" class="popup__occupation">
