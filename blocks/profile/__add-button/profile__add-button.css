@@ -7,4 +7,9 @@
     border: 0;
     outline: 0;
     padding: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.profile__add-button:hover {
+    opacity: 0.6;
 }
