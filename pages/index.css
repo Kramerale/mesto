@@ -39,3 +39,5 @@
 @import url(../blocks/popup/__name/popup__name.css);
 @import url(../blocks/popup/__occupation/popup__occupation.css);
 @import url(../blocks/popup/__submit-button/popup__submit-button.css);
+
+/* * {outline: 1px solid yellowgreen;} */

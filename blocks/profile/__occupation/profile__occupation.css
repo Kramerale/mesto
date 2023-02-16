@@ -5,3 +5,16 @@
     line-height: 22px;
     grid-area: profile__occupation;
 }
+
+@media (max-width: 640px) {
+    .profile__occupation {
+        text-align: center;
+    }
+}
+
+@media (max-width: 320px) {
+    .profile__occupation {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

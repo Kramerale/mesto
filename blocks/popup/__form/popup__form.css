@@ -6,3 +6,10 @@
     height: 330px;
     background-color: #FFFFFF;
 }
+
+@media (max-width: 520px) {
+    .popup__form {
+        width: 282px;
+        height: 322px;
+    }
+}

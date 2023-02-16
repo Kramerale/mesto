@@ -13,3 +13,10 @@
 .profile__add-button:hover {
     opacity: 0.6;
 }
+
+@media (max-width: 640px) {
+    .profile__add-button {
+        background-image: url(../../../images/add-button_large.svg);
+        width: 282px;
+    }
+}
