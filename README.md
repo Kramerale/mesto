@@ -1,6 +1,6 @@
 # Проект: Место
 
-[Ссылка на проект в Git Hub Pages]
+[Ссылка на проект в Git Hub Pages](https://kramerale.github.io/mesto/)
 
 ### Обзор
 
