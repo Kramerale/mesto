@@ -4,8 +4,8 @@ let editButton = document.querySelector('.profile__edit-button');
 
 let popup = document.querySelector('.popup');
 let popupForm = popup.querySelector('.popup__form');
-let popupName = popup.querySelector('.popup__name');
-let popupOccupation = popup.querySelector('.popup__occupation');
+let popupName = popup.querySelector('.popup__input_type_name');
+let popupOccupation = popup.querySelector('.popup__input_type_occupation');
 let closeButton = popup.querySelector('.popup__close-button');
 
 function openPopup () {
@@ -14,13 +14,9 @@ function openPopup () {
     popupOccupation.value = profileOccupation.textContent;
 };
 
-editButton.addEventListener('click', openPopup);
-
 function closePopup () {
     popup.classList.remove('popup_opened');
 };
-
-closeButton.addEventListener('click', closePopup);
 
 function handleFormSubmit (evt) {
     evt.preventDefault(); 
@@ -30,5 +26,9 @@ function handleFormSubmit (evt) {
 
     closePopup ();
 }
+
+editButton.addEventListener('click', openPopup);
+
+closeButton.addEventListener('click', closePopup);
 
 popupForm.addEventListener('submit', handleFormSubmit);

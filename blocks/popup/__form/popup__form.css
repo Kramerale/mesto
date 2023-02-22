@@ -1,15 +1,15 @@
 .popup__form {
-    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    width: 430px;
-    height: 330px;
-    background-color: #FFFFFF;
+    gap: 30px;
+    position: absolute;
+    top: 111px;
+    left: 36px;
 }
 
 @media (max-width: 520px) {
     .popup__form {
-        width: 282px;
-        height: 322px;
+        top: 122px;
+        left: 22px;
     }
 }
