@@ -32,10 +32,12 @@ let profileOccupation = document.querySelector('.profile__occupation');
 let editButton = document.querySelector('.profile__edit-button');
 
 let popup = document.querySelector('.popup');
-let popupForm = popup.querySelector('.popup__form');
-let popupName = popup.querySelector('.popup__input_type_name');
-let popupOccupation = popup.querySelector('.popup__input_type_occupation');
-let closeButton = popup.querySelector('.popup__close-button');
+let popupEdit = document.querySelector('.popup_edit');
+let popupAdd = document.querySelector('.popup_add');
+let popupForm = document.querySelector('.popup__form');
+let popupName = document.querySelector('.popup__input_type_name');
+let popupOccupation = document.querySelector('.popup__input_type_occupation');
+let closeButton = document.querySelector('.popup__close-button');
 
 function createNewCard (card) {
   const newCard = document.querySelector('.card-template').content.cloneNode(true);
@@ -45,6 +47,10 @@ function createNewCard (card) {
   const cardImage = newCard.querySelector('.card__image');
   cardImage.setAttribute('src', card.link);
   cardImage.setAttribute('alt', card.name);
+
+  newCard.querySelector('.card__like-button').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('card__like-button_active');
+  });
 
   cardList.append(newCard);
 };
