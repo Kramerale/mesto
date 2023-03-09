@@ -38,7 +38,7 @@ let popupPhoto = document.querySelector('.popup_type_photo');
 let popupForm = document.querySelector('.popup__form');
 let popupName = document.querySelector('.popup__input_type_name');
 let popupOccupation = document.querySelector('.popup__input_type_occupation');
-let closeButton = document.querySelectorAll('.popup__close-button');
+let closeButtons = document.querySelectorAll('.popup__close-button');
 
 function createCard (card) {
   const newCard = document.querySelector('.card-template').content.cloneNode(true);
@@ -68,10 +68,6 @@ function openPopup (popup) {
   popupOccupation.value = profileOccupation.textContent;
 };
 
-// function closePopup (popup) {
-//   popup.classList.remove('popup_opened');
-// };
-
 function closePopup (evt) {
   evt.target.closest('.popup').classList.remove('popup_opened');
 };
@@ -98,6 +94,8 @@ initialCards.forEach(card => renderCard(card, cardList));
 editButton.addEventListener('click', () => openPopup(popupEdit));
 addButton.addEventListener('click', () => openPopup(popupAdd));
 
-closeButton.addEventListener('click', closePopup);
+closeButtons.forEach(button => {
+  button.addEventListener('click', closePopup);
+});
 
 popupForm.addEventListener('submit', handleFormSubmit);
