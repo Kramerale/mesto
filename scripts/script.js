@@ -52,6 +52,10 @@ function createNewCard (card) {
     evt.target.classList.toggle('card__like-button_active');
   });
 
+  newCard.querySelector('.card__delete-button').addEventListener('click', function (evt) {
+    evt.target.closest('.card').remove();
+  })
+
   cardList.append(newCard);
 };
 
