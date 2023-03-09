@@ -37,7 +37,7 @@
     <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
   </footer>
 
-  <section class="popup popup_edit" aria-label="Попап для редактирования профиля пользователя">
+  <section class="popup popup_type_edit" aria-label="Попап для редактирования профиля пользователя">
     <div class="popup__container">
       <button type="button" title="Закрыть" aria-label="Закрыть" class="popup__close-button"></button>
       <h2 class="popup__heading">Редактировать профиль</h2>
@@ -49,16 +49,24 @@
     </div>
   </section>
 
-  <section class="popup popup_add" aria-label="Попап для добавления фотографий">
+  <section class="popup popup_type_add" aria-label="Попап для добавления фотографий">
     <div class="popup__container">
       <button type="button" title="Закрыть" aria-label="Закрыть" class="popup__close-button"></button>
       <h2 class="popup__heading">Новое место</h2>
       <form name="editform" class="popup__form">
-        <input name="name" type="text" value="Название" class="popup__input">
-        <input name="link" type="text" value="Ссылка на картинку" class="popup__input">
+        <input name="name" type="text" placeholder="Название" class="popup__input">
+        <input name="link" type="text" placeholder="Ссылка на картинку" class="popup__input">
         <button type="submit" class="popup__submit-button">Создать</button>
       </form>
     </div>
+  </section>
+
+  <section class="popup popup_type_photo" aria-label="Попап c увеличенной фотографией">
+    <figure class="popup__img-container">
+      <button type="button" title="Закрыть" aria-label="Закрыть" class="popup__close-button"></button>
+      <img class="popup__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"> <!-- удалить ссылку, добавить ее и alt js -->
+      <figcaption class="popup__image-title">Архыз</figcaption> <!-- удалить надпись, добавить js -->
+    </figure>
   </section>
 
   <template class="card-template">
