@@ -26,6 +26,8 @@ const initialCards = [
 ];
 
 const cardList = document.querySelector('.elements__card-list');
+// const cardImages = document.querySelectorAll('.card__image');
+// console.log(cardImages);
 
 let profileName = document.querySelector('.profile__name');
 let profileOccupation = document.querySelector('.profile__occupation');
@@ -35,9 +37,12 @@ let addButton = document.querySelector('.profile__add-button');
 let popupEdit = document.querySelector('.popup_type_edit');
 let popupAdd = document.querySelector('.popup_type_add');
 let popupPhoto = document.querySelector('.popup_type_photo');
-let popupForm = document.querySelector('.popup__form');
+let popupEditForm = document.querySelector('.popup__form_type_edit');
+let popupAddForm = document.querySelector('.popup__form_type_add');
 let popupName = document.querySelector('.popup__input_type_name');
 let popupOccupation = document.querySelector('.popup__input_type_occupation');
+let popupPlaceName = document.querySelector('.popup__input_type_place-name');
+let popupPlaceLink = document.querySelector('.popup__input_type_place-link');
 let closeButtons = document.querySelectorAll('.popup__close-button');
 
 function createCard (card) {
@@ -59,7 +64,7 @@ function createCard (card) {
 function renderCard (card, cardsContainer) {
   const newCard = createCard(card);
 
-  cardsContainer.append(newCard);
+  cardsContainer.prepend(newCard);
 };
 
 function openPopup (popup) {
@@ -78,7 +83,17 @@ function handleFormSubmit (evt) {
   profileName.textContent = popupName.value;
   profileOccupation.textContent = popupOccupation.value;
 
-  closePopup ();
+  closePopup (evt);
+};
+
+function createCardFromPopup (evt) {
+  evt.preventDefault();
+
+  renderCard({name: popupPlaceName.value, link: popupPlaceLink.value}, cardList);
+
+  closePopup (evt);
+
+  evt.target.reset();
 };
 
 function likeCard (evt) {
@@ -93,9 +108,13 @@ initialCards.forEach(card => renderCard(card, cardList));
 
 editButton.addEventListener('click', () => openPopup(popupEdit));
 addButton.addEventListener('click', () => openPopup(popupAdd));
+// cardImages.forEach(image => {
+//   image.addEventListener('click', () => openPopup(popupPhoto));
+// });
 
 closeButtons.forEach(button => {
   button.addEventListener('click', closePopup);
 });
 
-popupForm.addEventListener('submit', handleFormSubmit);
+popupEditForm.addEventListener('submit', handleFormSubmit);
+popupAddForm.addEventListener('submit', createCardFromPopup);
