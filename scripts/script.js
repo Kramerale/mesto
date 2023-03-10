@@ -26,8 +26,6 @@ const initialCards = [
 ];
 
 const cardList = document.querySelector('.elements__card-list');
-// const cardImages = document.querySelectorAll('.card__image');
-// console.log(cardImages);
 
 let profileName = document.querySelector('.profile__name');
 let profileOccupation = document.querySelector('.profile__occupation');
@@ -43,6 +41,8 @@ let popupName = document.querySelector('.popup__input_type_name');
 let popupOccupation = document.querySelector('.popup__input_type_occupation');
 let popupPlaceName = document.querySelector('.popup__input_type_place-name');
 let popupPlaceLink = document.querySelector('.popup__input_type_place-link');
+let popupImage = document.querySelector('.popup__image');
+let popupTitle = document.querySelector('.popup__image-title');
 let closeButtons = document.querySelectorAll('.popup__close-button');
 
 function createCard (card) {
@@ -58,6 +58,8 @@ function createCard (card) {
 
   newCard.querySelector('.card__delete-button').addEventListener('click', deleteCard);
 
+  newCard.querySelector('.card__image').addEventListener('click', openPhotoPopup);
+
   return newCard;
 };
 
@@ -72,6 +74,14 @@ function openPopup (popup) {
   popupName.value = profileName.textContent;
   popupOccupation.value = profileOccupation.textContent;
 };
+
+function openPhotoPopup (evt) {
+  popupImage.setAttribute('src', evt.target.closest('.card__image').src);
+  popupImage.setAttribute('alt', evt.target.closest('.card__image').alt);
+  popupTitle.textContent = evt.target.closest('.card__image').alt;
+
+  openPopup(popupPhoto);
+}
 
 function closePopup (evt) {
   evt.target.closest('.popup').classList.remove('popup_opened');
@@ -108,9 +118,6 @@ initialCards.forEach(card => renderCard(card, cardList));
 
 editButton.addEventListener('click', () => openPopup(popupEdit));
 addButton.addEventListener('click', () => openPopup(popupAdd));
-// cardImages.forEach(image => {
-//   image.addEventListener('click', () => openPopup(popupPhoto));
-// });
 
 closeButtons.forEach(button => {
   button.addEventListener('click', closePopup);
