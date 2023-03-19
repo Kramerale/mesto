@@ -35,6 +35,8 @@ const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
 const buttonsClose = document.querySelectorAll('.popup__close-button');
 
+const popupslist = document.querySelectorAll('.popup');
+
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
 const popupPhoto = document.querySelector('.popup_type_photo');
@@ -73,6 +75,7 @@ function renderCard (card, cardsContainer) {
 
 function openPopup (popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupByEsc);
 };
 
 function openEditPopup () {
@@ -92,6 +95,14 @@ function openPhotoPopup (evt) {
 
 function closePopup (popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupByEsc);
+};
+
+function closePopupByEsc (evt) {
+  if(evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
 };
 
 function handleEditFormSubmit (evt) {
@@ -128,6 +139,14 @@ buttonAdd.addEventListener('click', () => openPopup(popupAdd));
 
 buttonsClose.forEach(button => {
   button.addEventListener('click', () => closePopup(button.closest('.popup')));
+});
+
+popupslist.forEach(popup => {
+  popup.addEventListener('click', evt => {
+    if(evt.target === popup) {
+      closePopup(popup);
+    };
+  });
 });
 
 popupEditForm.addEventListener('submit', handleEditFormSubmit);
