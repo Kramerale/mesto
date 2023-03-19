@@ -1,30 +1,3 @@
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 const cardsContainer = document.querySelector('.elements__card-list');
 const cardTemplate = document.querySelector('.card-template').content.querySelector('.card');
 
@@ -49,6 +22,8 @@ const popupPlaceLink = document.querySelector('.popup__input_type_place-link');
 const popupImage = document.querySelector('.popup__image');
 const popupTitle = document.querySelector('.popup__image-title');
 
+//Функция создания карточки
+
 function createCard (card) {
   const newCard = cardTemplate.cloneNode(true);
   const cardTitle = newCard.querySelector('.card__title');
@@ -67,16 +42,22 @@ function createCard (card) {
   return newCard;
 };
 
+//Функция для добавления новой карточки на страницу
+
 function renderCard (card, cardsContainer) {
   const newCard = createCard(card);
 
   cardsContainer.prepend(newCard);
 };
 
+//Общая функция для открытия попапов
+
 function openPopup (popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByEsc);
 };
+
+//Функция для открытия попапа редактирования информации о пользователе
 
 function openEditPopup () {
   popupProfileName.value = profileName.textContent;
@@ -84,6 +65,8 @@ function openEditPopup () {
 
   openPopup(popupEdit);
 };
+
+//Функция для открытия попапа с полноразмерной фотографией
 
 function openPhotoPopup (evt) {
   popupImage.setAttribute('src', evt.target.closest('.card__image').src);
@@ -93,10 +76,14 @@ function openPhotoPopup (evt) {
   openPopup(popupPhoto);
 };
 
+//Общая функция для закрытия попапов
+
 function closePopup (popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupByEsc);
 };
+
+//Функция для закрытия попапа при нажатии ecs
 
 function closePopupByEsc (evt) {
   if(evt.key === 'Escape') {
@@ -104,6 +91,8 @@ function closePopupByEsc (evt) {
     closePopup(popupOpened);
   }
 };
+
+//Функция для обработки формы редактирования инфо о пользователе
 
 function handleEditFormSubmit (evt) {
   evt.preventDefault();
@@ -113,6 +102,8 @@ function handleEditFormSubmit (evt) {
 
   closePopup (popupEdit);
 };
+
+//Функция для обработки формы создания новой карточки
 
 function createCardFromAddPopup (evt) {
   evt.preventDefault();
@@ -124,9 +115,13 @@ function createCardFromAddPopup (evt) {
   evt.target.reset();
 };
 
+//Функция для добавления лайков на карточки
+
 function likeCard (evt) {
   evt.target.classList.toggle('card__like-button_active');
 };
+
+//Функция для удаления карточек
 
 function deleteCard (evt) {
   evt.target.closest('.card').remove();
@@ -140,6 +135,8 @@ buttonAdd.addEventListener('click', () => openPopup(popupAdd));
 buttonsClose.forEach(button => {
   button.addEventListener('click', () => closePopup(button.closest('.popup')));
 });
+
+//Закрытие попапа по нажатию на overlay
 
 popupslist.forEach(popup => {
   popup.addEventListener('click', evt => {
