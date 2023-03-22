@@ -13,14 +13,23 @@ const popupslist = document.querySelectorAll('.popup');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
 const popupPhoto = document.querySelector('.popup_type_photo');
-const popupEditForm = document.querySelector('.popup__form_type_edit');
-const popupAddForm = document.querySelector('.popup__form_type_add');
-const popupProfileName = document.querySelector('.popup__input_type_name');
-const popupProfileOccupation = document.querySelector('.popup__input_type_occupation');
-const popupPlaceName = document.querySelector('.popup__input_type_place-name');
-const popupPlaceLink = document.querySelector('.popup__input_type_place-link');
+// const popupEditForm = document.querySelector('.popup__form_type_edit');
+const popupEditForm = document.forms.editform;
+// const popupAddForm = document.querySelector('.popup__form_type_add');
+const popupAddForm = document.forms.addform;
+// const popupProfileName = document.querySelector('.popup__input_type_name');
+const popupProfileName = popupEditForm.elements.name;
+// const popupProfileOccupation = document.querySelector('.popup__input_type_occupation');
+const popupProfileOccupation = popupEditForm.elements.occupation;
+// const popupPlaceName = document.querySelector('.popup__input_type_place-name');
+const popupPlaceName = popupAddForm.elements.title;
+// const popupPlaceLink = document.querySelector('.popup__input_type_place-link');
+const popupPlaceLink = popupAddForm.elements.link;
 const popupImage = document.querySelector('.popup__image');
 const popupTitle = document.querySelector('.popup__image-title');
+
+// const popupSubmitButton = document.querySelector('.popup__submit-button');
+const submitButtonList = document.querySelectorAll('.popup__submit-button');
 
 //Функция создания карточки
 
