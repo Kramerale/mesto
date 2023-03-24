@@ -8,7 +8,7 @@ const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
 const buttonsClose = document.querySelectorAll('.popup__close-button');
 
-const popupslist = document.querySelectorAll('.popup');
+const popupsList = document.querySelectorAll('.popup');
 
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
@@ -28,8 +28,7 @@ const popupPlaceLink = popupAddForm.elements.link;
 const popupImage = document.querySelector('.popup__image');
 const popupTitle = document.querySelector('.popup__image-title');
 
-// const popupSubmitButton = document.querySelector('.popup__submit-button');
-const submitButtonList = document.querySelectorAll('.popup__submit-button');
+const buttonsSubmit = document.querySelectorAll('.popup__submit-button');
 
 //Функция создания карточки
 
@@ -46,7 +45,7 @@ function createCard (card) {
 
   newCard.querySelector('.card__delete-button').addEventListener('click', deleteCard);
 
-  cardImage.addEventListener('click', openPhotoPopup);
+  cardImage.addEventListener('click', () => openPhotoPopup(card));
 
   return newCard;
 };
@@ -77,10 +76,10 @@ function openEditPopup () {
 
 //Функция для открытия попапа с полноразмерной фотографией
 
-function openPhotoPopup (evt) {
-  popupImage.setAttribute('src', evt.target.closest('.card__image').src);
-  popupImage.setAttribute('alt', evt.target.closest('.card__image').alt);
-  popupTitle.textContent = evt.target.closest('.card__image').alt;
+function openPhotoPopup (card) {
+  popupImage.setAttribute('src', card.link);
+  popupImage.setAttribute('alt', card.name);
+  popupTitle.textContent = card.name;
 
   openPopup(popupPhoto);
 };
@@ -139,7 +138,11 @@ function deleteCard (evt) {
 initialCards.forEach(card => renderCard(card, cardsContainer));
 
 buttonEdit.addEventListener('click', openEditPopup);
-buttonAdd.addEventListener('click', () => openPopup(popupAdd));
+buttonAdd.addEventListener('click', () => {
+  const submitButton = popupAdd.querySelector('.popup__submit-button');
+  disableButton(submitButton, validationConfig);
+  openPopup(popupAdd)
+});
 
 buttonsClose.forEach(button => {
   button.addEventListener('click', () => closePopup(button.closest('.popup')));
@@ -147,7 +150,7 @@ buttonsClose.forEach(button => {
 
 //Закрытие попапа по нажатию на overlay
 
-popupslist.forEach(popup => {
+popupsList.forEach(popup => {
   popup.addEventListener('click', evt => {
     if(evt.target === popup) {
       closePopup(popup);

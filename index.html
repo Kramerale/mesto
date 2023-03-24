@@ -42,14 +42,10 @@
       <button type="button" title="Закрыть" aria-label="Закрыть" class="popup__close-button"></button>
       <h2 class="popup__heading">Редактировать профиль</h2>
       <form name="editform" class="popup__form popup__form_type_edit" novalidate>
-        <label for="name-input" class="popup__label">
           <input id="name-input" name="name" type="text" placeholder="Имя" class="popup__input popup__input_type_name" minlength="2" maxlength="40" required>
           <span class="popup__input-error name-input-error"></span>
-        </label>
-        <label for="occupation-input" class="popup__label">
           <input id="occupation-input" name="occupation" type="text" placeholder="О себе" class="popup__input popup__input_type_occupation" minlength="2" maxlength="200" required>
           <span class="popup__input-error occupation-input-error"></span>
-        </label>
         <button type="submit" class="popup__submit-button">Сохранить</button>
       </form>
     </div>
@@ -60,14 +56,10 @@
       <button type="button" title="Закрыть" aria-label="Закрыть" class="popup__close-button"></button>
       <h2 class="popup__heading">Новое место</h2>
       <form name="addform" class="popup__form popup__form_type_add" novalidate>
-        <label for="title-input" class="popup__label">
           <input id="title-input" name="title" type="text" placeholder="Название" class="popup__input popup__input_type_place-name" minlength="2" maxlength="30" required>
           <span class="popup__input-error title-input-error"></span>
-        </label>
-        <label for="link-input" class="popup__label">
           <input id="link-input" name="link" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_type_place-link" required>
           <span class="popup__input-error link-input-error"></span>
-        </label>
         <button type="submit" class="popup__submit-button">Создать</button>
       </form>
     </div>
