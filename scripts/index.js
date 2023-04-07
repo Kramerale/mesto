@@ -17,19 +17,17 @@ import {openPopup,
         openEditPopup,
         closePopup,
         handleEditFormSubmit,
+        createCard,
         createCardFromAddPopup} from './functions.js';
 
 initialCards.forEach((item) => {
-  const card = new Card(item, '.card-template');
-  const cardItem = card.createCard();
-  cardsContainer.prepend(cardItem);
+  createCard(item, '.card-template');
 });
 
 buttonEdit.addEventListener('click', openEditPopup);
 
 buttonAdd.addEventListener('click', () => {
-  const submitButton = popupAdd.querySelector('.popup__submit-button');
-  addFormValidation.disableButton(submitButton);
+  addFormValidation.disableButton();
   openPopup(popupAdd)
 });
 
@@ -51,8 +49,8 @@ popupEditForm.addEventListener('submit', handleEditFormSubmit);
 
 popupAddForm.addEventListener('submit', createCardFromAddPopup);
 
-const editFormValidation = new FormValidator(validationConfig, '.popup__form_type_edit');
+const editFormValidation = new FormValidator(validationConfig, popupEditForm);
 editFormValidation.enableValidation();
 
-const addFormValidation = new FormValidator(validationConfig, '.popup__form_type_add');
+const addFormValidation = new FormValidator(validationConfig, popupAddForm);
 addFormValidation.enableValidation();

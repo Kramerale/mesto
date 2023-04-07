@@ -40,7 +40,7 @@ export class Card {
     this._cardImage.addEventListener('click', () => this._openPhotoPopup());
   }
 
-  createCard () {
+  generateCard () {
     this._newCard = this._getTemplate();
 
     this._cardTitle = this._newCard.querySelector('.card__title');

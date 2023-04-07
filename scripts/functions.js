@@ -1,4 +1,5 @@
 import {Card} from './Card.js';
+
 import {cardsContainer,
         popupProfileName,
         profileName,
@@ -52,6 +53,12 @@ export function handleEditFormSubmit (evt) {
   closePopup (popupEdit);
 };
 
+export function createCard (data, templateSelector) {
+  const card = new Card(data, templateSelector);
+  const cardItem = card.generateCard();
+  cardsContainer.prepend(cardItem);
+};
+
 //Функция для обработки формы создания новой карточки
 
 export function createCardFromAddPopup (evt) {
@@ -62,9 +69,7 @@ export function createCardFromAddPopup (evt) {
     link: popupPlaceLink.value
   };
 
-  const card = new Card(newCard, '.card-template');
-  const cardItem = card.createCard();
-  cardsContainer.prepend(cardItem);
+  createCard(newCard, '.card-template');
 
   closePopup(popupAdd);
 
