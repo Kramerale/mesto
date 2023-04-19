@@ -29,3 +29,4 @@
 * JavaScript
 * ООП
 * ES6 Modules
+* Сборка проекта с помощью Webpack
