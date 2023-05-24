@@ -1,11 +1,9 @@
-import {popupPhoto, popupImage, popupTitle} from './constants.js';
-import {openPopup} from './functions.js';
-
 export class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardTemplateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate () {
@@ -26,18 +24,10 @@ export class Card {
     this._newCard.remove();
   }
 
-  _openPhotoPopup () {
-    popupImage.src = this._link;
-    popupImage.alt = this._name;
-    popupTitle.textContent = this._name;
-
-    openPopup(popupPhoto);
-  }
-
   _setEventListeners () {
     this._likeButton.addEventListener('click', () => this._likeCard());
     this._deleteButton.addEventListener('click', () => this._deleteCard());
-    this._cardImage.addEventListener('click', () => this._openPhotoPopup());
+    this._cardImage.addEventListener('click', () => this._handleCardClick());
   }
 
   generateCard () {
