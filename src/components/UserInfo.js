@@ -11,8 +11,8 @@ export class UserInfo {
     }
   }
 
-  setUserInfo ({profileName, profileOccupation}) {
-    this._profileNameSelector.textContent = profileName;
-    this._profileOccupationSelector.textContent = profileOccupation;
+  setUserInfo ({userName, userOccupation}) {
+    this._profileNameSelector.textContent = userName;
+    this._profileOccupationSelector.textContent = userOccupation;
   }
 }

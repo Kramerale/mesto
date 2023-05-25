@@ -40,5 +40,5 @@ export const buttonAdd = document.querySelector('.profile__add-button');
 
 export const popupEditForm = document.forms.editform;
 export const popupAddForm = document.forms.addform;
-export const popupProfileName = popupEditForm.elements.name;
-export const popupProfileOccupation = popupEditForm.elements.occupation;
+export const popupProfileName = popupEditForm.elements.userName;
+export const popupProfileOccupation = popupEditForm.elements.userOccupation;

@@ -1,16 +1,17 @@
 import '../pages/index.css';
 
-import {Card} from './Card.js';
+//поменять все пути в импортах ниже:
+import {Card} from '../components/Card.js';
 
-import {Section} from './Section.js';
+import {Section} from '../components/Section.js';
 
-import {FormValidator} from './FormValidator.js';
+import {FormValidator} from '../components/FormValidator.js';
 
-import { PopupWithForm } from './PopupWithForm.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
 
-import { PopupWithImage } from './PopupWithImage';
+import { PopupWithImage } from '../components/PopupWithImage.js';
 
-import { UserInfo } from './UserInfo.js';
+import { UserInfo } from '../components/UserInfo.js';
 
 import {initialCards,
         validationConfig,
@@ -20,7 +21,7 @@ import {initialCards,
         popupEditForm,
         popupAddForm,
         popupProfileName,
-        popupProfileOccupation} from './constants.js';
+        popupProfileOccupation} from '../utils/constants.js';
 
 const popupImage = new PopupWithImage('.popup_type_photo');
 popupImage.setEventListeners();
@@ -56,10 +57,7 @@ cardList.renderItems();
 const popupEditProfile = new PopupWithForm({
   popupSelector: '.popup_type_edit',
   handleSubmitFunction: data => {
-    userInfo.setUserInfo({
-      profileName: data.name,
-      profileOccupation: data.occupation
-    });
+    userInfo.setUserInfo(data);
   }
 });
 
@@ -76,12 +74,8 @@ buttonEdit.addEventListener('click', () => {
 const popupAddNewPlace = new PopupWithForm({
   popupSelector: '.popup_type_add',
   handleSubmitFunction: data => {
-    const newCard = {
-      name: data.title,
-      link: data.link
-    };
-
-    createCard(newCard, '.card-template');
+    const newCard = createCard(data, '.card-template');
+    cardList.addItem(newCard);
   }
 });
 
