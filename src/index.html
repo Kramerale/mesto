@@ -15,7 +15,9 @@
   <main>
     <section class="profile">
       <div class="profile__user">
-        <img src="<%=require('./images/profile-img.jpg')%>" alt="Аватар пользователя" class="profile__avatar">
+        <button type="button" title="Обновить аватар" aria-label="Обновить аватар" class="profile__change-avatar">
+          <img src="<%=require('./images/profile-img.jpg')%>" alt="Аватар пользователя" class="profile__avatar">
+        </button>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button type="button" title="Редактировать" aria-label="Редактировать" class="profile__edit-button"></button>
@@ -80,13 +82,40 @@
     </figure>
   </section>
 
+  <section class="popup popup_type_change-avatar" aria-label="Попап для обновления аватара">
+    <div class="popup__container">
+      <button type="button" title="Закрыть" aria-label="Закрыть" class="popup__close-button"></button>
+      <h2 class="popup__heading">Обновить аватар</h2>
+      <form name="changeform" class="popup__form popup__form_type_change-avatar" novalidate>
+        <label class="popup__label" for="avatarlink-input">
+          <input id="avatarlink-input" name="link" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_type_avatar-link" required>
+          <span class="link-input-error"></span>
+        </label>
+        <button type="submit" class="popup__submit-button">Сохранить</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="popup popup_type_confirm" aria-label="Попап для подтверждения удаления карточки с фотографией">
+    <div class="popup__container">
+      <button type="button" title="Закрыть" aria-label="Закрыть" class="popup__close-button"></button>
+      <h2 class="popup__heading">Вы уверены?</h2>
+      <form name="confirmform" class="popup__form popup__form_type_confirm" novalidate>
+        <button type="submit" class="popup__submit-button">Да</button>
+      </form>
+    </div>
+  </section>
+
   <template class="card-template">
     <li class="card">
       <button type="button" title="Удалить" aria-label="Удалить" class="card__delete-button"></button>
       <img class="card__image">
       <div class="card__description">
         <h2 class="card__title"></h2>
-        <button type="button" title="Нравится" aria-label="Нравится" class="card__like-button"></button>
+        <div class="card__like-container">
+          <button type="button" title="Нравится" aria-label="Нравится" class="card__like-button"></button>
+          <p class="card__like-count"></p>
+        </div>
       </div>
     </li>
   </template>

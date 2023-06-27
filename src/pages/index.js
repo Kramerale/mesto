@@ -1,6 +1,5 @@
 import '../pages/index.css';
 
-//поменять все пути в импортах ниже:
 import {Card} from '../components/Card.js';
 
 import {Section} from '../components/Section.js';
@@ -45,7 +44,7 @@ const userInfo = new UserInfo({
 
 const cardList = new Section({
   items: initialCards,
-  renderer: (item) => {
+  renderer: item => {
     const cardElement = createCard(item, '.card-template');
     cardList.addItem(cardElement);
   },
@@ -56,7 +55,7 @@ cardList.renderItems();
 
 const popupEditProfile = new PopupWithForm({
   popupSelector: '.popup_type_edit',
-  handleSubmitFunction: data => {
+  handleSubmitFunction: data => { //data здесь  - это объект с данными юзера, которые он ввел в форму редактирования профиля
     userInfo.setUserInfo(data);
   }
 });
@@ -73,8 +72,8 @@ buttonEdit.addEventListener('click', () => {
 
 const popupAddNewPlace = new PopupWithForm({
   popupSelector: '.popup_type_add',
-  handleSubmitFunction: data => {
-    const newCard = createCard(data, '.card-template');
+  handleSubmitFunction: data => { //data здесь  - это объект с названием места и ссылкой на фото, которые пользователь добавил
+    const newCard = createCard(data, '.card-template'); //через форму добавления карточки
     cardList.addItem(newCard);
   }
 });

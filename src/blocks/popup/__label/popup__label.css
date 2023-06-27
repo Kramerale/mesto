@@ -1,8 +1,8 @@
 .popup__label {
   height: 50px;
-  margin: 0 0 28px;
+  margin: 0 0 30px;
 }
 
 .popup__label:last-of-type {
-  margin: 0;
+  margin-bottom: 38px;
 }
