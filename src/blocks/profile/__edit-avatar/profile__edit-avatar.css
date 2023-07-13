@@ -1,4 +1,4 @@
-.profile__change-avatar {
+.profile__edit-avatar {
   border-radius: 50%;
   outline: none;
   border: none;
@@ -9,7 +9,7 @@
   transition: background-color 0.5s ease-in-out;
 }
 
-.profile__change-avatar:hover{
+.profile__edit-avatar:hover{
   background: rgba(0, 0, 0, 0.8) url(../../../images/edit-button.svg) center / 26px no-repeat;
   cursor: pointer;
 }

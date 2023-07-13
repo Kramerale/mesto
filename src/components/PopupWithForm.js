@@ -34,4 +34,9 @@ export class PopupWithForm extends Popup {
     super.close();
     this._popupForm.reset();
   }
+
+  showLoadingInfo (isLoading) {
+    const submitButton = document.querySelector('.popup__submit-button');
+    isLoading ? submitButton.textContent = 'Сохранение...' : submitButton.textContent = 'Сохранить';
+  }
 }
