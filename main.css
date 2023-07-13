@@ -5,7 +5,7 @@
 .logo{display:block;height:33px;width:142px}@media (max-width:320px){.logo{height:24.4px;margin-left:27px;width:103.74px}}
 .profile{align-items:center;display:flex;justify-content:space-between;margin:0 auto 51px;max-width:880px}@media (max-width:640px){.profile{flex-direction:column;max-width:282px}}@media (max-width:320px){.profile{margin-bottom:39px}}
 .profile__user{display:flex;gap:30px}@media (max-width:640px){.profile__user{align-items:center;flex-direction:column;gap:26px;margin-bottom:36px}}
-.profile__change-avatar{background:transparent;border:none;border-radius:50%;height:120px;outline:none;padding:0;transition:background-color .5s ease-in-out;width:120px}.profile__change-avatar:hover{background:rgba(0,0,0,.8) url(images/edit-button.5f7df902c26d761a5259.svg) 50% /26px no-repeat;cursor:pointer}
+.profile__edit-avatar{background:transparent;border:none;border-radius:50%;height:120px;outline:none;padding:0;transition:background-color .5s ease-in-out;width:120px}.profile__edit-avatar:hover{background:rgba(0,0,0,.8) url(images/edit-button.5f7df902c26d761a5259.svg) 50% /26px no-repeat;cursor:pointer}
 .profile__avatar{border-radius:50%;display:block;height:120px;position:relative;width:120px;z-index:-1}
 .profile__info{align-content:center;align-items:center;display:grid;gap:16px;grid-template-areas:"profile__name profile__edit-button" "profile__occupation .";grid-template-columns:294px 1fr}@media (max-width:640px){.profile__info{gap:14px 10px;grid-template-areas:"profile__name profile__edit-button" "profile__occupation profile__occupation";grid-template-columns:1fr;max-width:282px;text-align:center}}
 .profile__name{font-size:42px;font-weight:500;grid-area:profile__name;line-height:48px;margin:0;max-width:294px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media (max-width:640px){.profile__name{font-size:27px;line-height:33px;max-width:189px;text-align:center}}
@@ -29,7 +29,7 @@
 .popup_type_edit{background-color:rgba(0,0,0,.5)}
 .popup_type_add{background-color:rgba(0,0,0,.5)}
 .popup_type_photo{background-color:rgba(0,0,0,.9)}
-.popup_type_change-avatar{background-color:rgba(0,0,0,.5)}
+.popup_type_edit-avatar{background-color:rgba(0,0,0,.5)}
 .popup_type_confirm{background-color:rgba(0,0,0,.5)}
 .popup_opened{opacity:1;visibility:visible}
 .popup__container{background-color:#fff;border-radius:10px;position:relative;width:430px}@media (max-width:520px){.popup__container{width:282px}}
