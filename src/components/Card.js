@@ -1,15 +1,17 @@
 export class Card {
-  constructor(data, templateSelector, {handleCardClick, handleLikeClick, handleDeleteClick}, isUserOwner) {
+  constructor(data, templateSelector, {handleCardClick, handleLikeClick, handleDeleteClick}, myId, isUserOwner) {
     this._name = data.name;
     this._link = data.link;
     this._cardId = data._id;
     this._cardOwnerId = data.owner._id;
     this._likeCounter = data.likes.length;
+    this._likeList = data.likes;
     this._cardTemplateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._handleLikeClick = handleLikeClick;
     this._handleDeleteClick = handleDeleteClick;
     this._isUserOwner = isUserOwner;
+    this._myId = myId;
   }
 
   _getTemplate () {
@@ -31,9 +33,9 @@ export class Card {
     return this._likeButton.classList.contains('card__like-button_active');
   }
 
-  updateLikeCount (newCountData) {
-    this._likeButton.classList.toggle('card__like-button_active');
+  updateLikeStatus (newCountData, likeStatus) {
     this._likeCounterElement.textContent = newCountData;
+    this._likeButton.classList.toggle('card__like-button_active', likeStatus);
   }
 
   _setEventListeners () {
@@ -60,6 +62,8 @@ export class Card {
     this._cardImage.setAttribute('alt', this._name);
 
     this._likeCounterElement.textContent = this._likeCounter;
+
+    this.updateLikeStatus(this._likeCounter, this._likeList.some(el => el._id === this._myId));
 
     this._setEventListeners();
 

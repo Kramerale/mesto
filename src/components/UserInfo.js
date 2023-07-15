@@ -13,12 +13,22 @@ export class UserInfo {
   }
 
   setUserInfo ({userName, userOccupation}) {
-    this._profileNameSelector.textContent = userName;
-    this._profileOccupationSelector.textContent = userOccupation;
+    if (userName) {
+      this._profileNameSelector.textContent = userName;
+    };
+
+    if (userOccupation) {
+      this._profileOccupationSelector.textContent = userOccupation;
+    };
+    // this._profileNameSelector.textContent = userName;
+    // this._profileOccupationSelector.textContent = userOccupation;
   }
 
   setUserAvatar (userAvatar) {
-    this._profileAvatarSelector.src = userAvatar;
+    if (userAvatar) {
+      this._profileAvatarSelector.src = userAvatar;
+    };
+    // this._profileAvatarSelector.src = userAvatar;
   }
 
   keepUserId (userId) {

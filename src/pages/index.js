@@ -27,6 +27,17 @@ import {validationConfig,
         popupProfileName,
         popupProfileOccupation} from '../utils/constants.js';
 
+fetch('https://mesto.nomoreparties.co/v1/cohort-70/cards', {
+  headers: {
+    authorization: '8fe60504-aa52-4743-868a-71782c18b288',
+    'Content-Type': 'application/json'
+  }
+})
+.then(res => res.json())
+.then(res => {
+  console.log(res);
+})
+
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-70',
   headers: {
@@ -42,6 +53,9 @@ api.getPageData()
   userInfo.setUserAvatar(userData.avatar);
   userInfo.keepUserId(userData._id);
   cardList.renderItems(cardData);
+})
+.catch(err => {
+  console.error(err);
 });
 
 const popupImage = new PopupWithImage('.popup_type_photo');
@@ -57,6 +71,7 @@ const userInfo = new UserInfo({
 });
 
 function createCard (data, templateSelector) {
+  const myId = userInfo.getUserId();
   const isUserOwner = data.owner._id === userInfo.getUserId();
   const card = new Card (data, templateSelector, {
     handleCardClick: () => {
@@ -66,7 +81,9 @@ function createCard (data, templateSelector) {
       if (card.hasLike()) {
         api.deleteCardLike(card.getCardId())
         .then(data => {
-          card.updateLikeCount(data.likes.length);
+          card.updateLikeStatus(data.likes.length, data.likes.some(el => {
+            return el._id === userInfo.getUserId();
+          }));
         })
         .catch(err => {
           console.error(err);
@@ -74,7 +91,9 @@ function createCard (data, templateSelector) {
       } else {
         api.addCardLike(card.getCardId())
         .then(data => {
-          card.updateLikeCount(data.likes.length);
+          card.updateLikeStatus(data.likes.length, data.likes.some(el => {
+            return el._id === userInfo.getUserId();
+          }));
         })
         .catch(err => {
           console.error(err);
@@ -96,10 +115,10 @@ function createCard (data, templateSelector) {
       })
     }
   },
+  myId,
   isUserOwner
   );
   const cardItem = card.generateCard();
-  // cardsContainer.prepend(cardItem); //????
   return cardItem;
 };
 
@@ -117,6 +136,9 @@ const popupEditProfile = new PopupWithForm({
     popupEditProfile.showLoadingInfo(true);
     userInfo.setUserInfo(data);
     api.editUserInfo({name: data.userName, about: data.userOccupation})
+    .then(() => {
+      popupEditProfile.close();
+    })
     .catch(err => {
       console.error(err);
     })
@@ -139,13 +161,20 @@ buttonEdit.addEventListener('click', () => {
 const popupAddNewPlace = new PopupWithForm({
   popupSelector: '.popup_type_add',
   handleSubmitFunction: data => { //data здесь  - это объект с названием места и ссылкой на фото, которые пользователь добавил через форму добавления карточки
+    popupAddNewPlace.showLoadingInfo(true);
     api.addCard(data)
     .then(data => {
       const newCard = createCard(data, '.card-template');
-      cardList.addItem(newCard);
+      cardList.addNewItem(newCard);
+    })
+    .then(() => {
+      popupAddNewPlace.close();
     })
     .catch(err => {
       console.error(err);
+    })
+    .finally(() => {
+      popupAddNewPlace.showLoadingInfo(false);
     })
   }
 });
@@ -164,6 +193,9 @@ const popupEditAvatar = new PopupWithForm({
     popupEditAvatar.showLoadingInfo(true);
     userInfo.setUserAvatar(data.link);
     api.editUserAvatar({avatar: data.link})
+    .then(() => {
+      popupEditAvatar.close();
+    })
     .catch(err => {
       console.error(err);
     })
